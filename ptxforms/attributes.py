@@ -20,6 +20,7 @@ from ptxforms.common.routes import ROUTE_GET_ATTRIBUTE_CHILD_PAIRS
 from ptxforms.common.routes import ROUTE_GET_ATTRIBUTE_COMPONENTS
 from ptxforms.common.routes import ROUTE_GET_ATTRIBUTE_PARENT_PAIRS
 from ptxforms.common.routes import ROUTE_GET_ATTRIBUTE_TRACKERS
+from ptxforms.common.routes import ROUTE_SEARCH_TRACKERS
 from ptxforms.common.routes import ROUTE_SEARCH_TRACKERS_ADDTHIS_ID
 from ptxforms.common.routes import ROUTE_SEARCH_TRACKERS_ADDTHIS_USERNAME
 from ptxforms.common.routes import ROUTE_SEARCH_TRACKERS_CLICKY
@@ -171,6 +172,8 @@ def get_host_attribute_child_pairs(trx, context):
     return maltego_response(trx)
 
 
+@route(ROUTE_SEARCH_TRACKERS, method="ANY")
+@load_maltego(debug=False)
 def run_tracker_search(trx, context, field):
     """Abstract runner to search tracker data."""
     query_value = context.Value
